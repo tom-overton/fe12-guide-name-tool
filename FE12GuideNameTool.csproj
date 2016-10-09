@@ -46,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHelper.cs" />
     <Compile Include="FE12GuideNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FE12GuideNameForm.Designer.cs">
       <DependentUpon>FE12GuideNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NameHelper.cs" />
     <Compile Include="Palette.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

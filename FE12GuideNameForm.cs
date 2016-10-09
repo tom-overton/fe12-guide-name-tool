@@ -27,9 +27,9 @@ namespace FE12GuideNameTool
                 filenameBox.Text = file;
                 try
                 {
-                    TileHelper.InitializeTileHelper(File.ReadAllBytes(file));
-                    Bitmap test = TileHelper.CreateBigTestBitmap();
-                    pictureBox1.Image = test;
+                    NameHelper.InitializeNameHelper(file);
+                    NameHelper.CreateScrambledNameList();
+                    pictureBox1.Image = NameHelper.nameList[0];
                 }
                 catch (IOException)
                 {

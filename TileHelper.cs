@@ -1,47 +1,25 @@
-﻿using System;
+﻿// Copyright (c) 2016 Tom Overton
+// Class for converting raw byte data to 8x8 tiles.
+
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FE12GuideNameTool
 {
     public class TileHelper
     {
-        public static byte[] fileData;
-        public static byte[] data;
-        public static List<Bitmap> tiles = new List<Bitmap>();
+        public List<Bitmap> tiles = new List<Bitmap>();
 
-        public static void InitializeTileHelper(byte[] rawData)
+        private DataHelper helper;
+
+        public TileHelper(string fileName)
         {
-            fileData = rawData;
-            InitializeData();
+            helper = new DataHelper(fileName);
+            CreateTilesFromData(this.helper.data);
         }
 
-        public static Bitmap CreateBigTestBitmap()
+        public void CreateTilesFromData(byte[] data)
         {
-            CreateTiles();
-
-            int xDim = 256;
-            int yDim = ((tiles.Count / 32) + 1) * 8;
-            Bitmap result = new Bitmap(xDim, yDim);
-            Graphics canvas = Graphics.FromImage(result);
-            for (int i = 0; i < tiles.Count; i++)
-            {
-                int x = (i % 32) * 8;
-                int y = (i / 32) * 8;
-                canvas.DrawImage(tiles[i], x, y, 8, 8);
-                canvas.Save();
-            }
-
-            return result;
-        }
-
-        private static void CreateTiles()
-        {
-            InitializeData();
-
             int tileIndex = 0;
             bool previousTileContainsData;
             do
@@ -66,23 +44,6 @@ namespace FE12GuideNameTool
                 tileIndex++;
             }
             while (previousTileContainsData);
-        }
-
-        private static void InitializeData()
-        {
-            if (fileData == null || fileData.Length == 0)
-            {
-                return;
-            }
-
-            data = new byte[fileData.Length * 2];
-            for (int i = 0; i < fileData.Length; i++)
-            {
-                int first16Bits = fileData[i] % 16;
-                int second16Bits = fileData[i] / 16;
-                data[2 * i] = (byte)first16Bits;
-                data[(2 * i) + 1] = (byte)second16Bits;
-            }
         }
     }
 }
