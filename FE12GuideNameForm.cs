@@ -63,5 +63,14 @@ namespace FE12GuideNameTool
                 NameHelper.nameList[nameListBox.SelectedIndex].Save(file, ImageFormat.Png);
             }
         }
+
+        private void importButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = importPngOpenFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                NameHelper.UpdateName(importPngOpenFileDialog.FileName, nameListBox.SelectedIndex);
+            }
+        }
     }
 }

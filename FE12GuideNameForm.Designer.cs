@@ -36,6 +36,7 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.importButton = new System.Windows.Forms.Button();
             this.exportPngSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.importPngOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,10 +100,15 @@
             this.importButton.TabIndex = 5;
             this.importButton.Text = "Import from PNG";
             this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // exportPngSaveFileDialog
             // 
             this.exportPngSaveFileDialog.Filter = "PNG files|*.png|All Files|*.*";
+            // 
+            // importPngOpenFileDialog
+            // 
+            this.importPngOpenFileDialog.Filter = "PNG files|*.png|All Files|*.*";
             // 
             // FE12GuideNameForm
             // 
@@ -133,6 +139,7 @@
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.SaveFileDialog exportPngSaveFileDialog;
+        private System.Windows.Forms.OpenFileDialog importPngOpenFileDialog;
     }
 }
 
