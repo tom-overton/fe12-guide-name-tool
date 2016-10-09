@@ -1,4 +1,6 @@
-﻿namespace FE12GuideNameTool
+﻿// Copyright (c) 2016 Tom Overton
+
+namespace FE12GuideNameTool
 {
     partial class FE12GuideNameForm
     {

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// Copyright (c) 2016 Tom Overton
+
+using System;
 using System.Windows.Forms;
 
 namespace FE12GuideNameTool

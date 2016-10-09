@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) 2016 Tom Overton
+// Class for converting 8x8 tiles to 64x12 name bitmaps and vice versa.
+
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace FE12GuideNameTool
 {
     public class NameHelper
     {
-        public static List<Bitmap> scrambledNameList;
-        public static List<Bitmap> nameList;
+        public List<Bitmap> scrambledNameList;
+        public List<Bitmap> nameList;
 
-        private static TileHelper tileHelper;
-        private static int xDim = 136;
-        private static int yDim = 8;
+        private TileHelper tileHelper;
+        private int xDim = 136;
+        private int yDim = 8;
 
         private static Rectangle section1 = new Rectangle(0, 7, 32, 1);
         private static Rectangle section2 = new Rectangle(8, 0, 32, 5);
@@ -30,31 +34,26 @@ namespace FE12GuideNameTool
         private static Rectangle reverseSection7 = new Rectangle(32, 6, 32, 3);
         private static Rectangle reverseSection8 = new Rectangle(32, 9, 32, 3);
 
-        public static void InitializeNameHelper(string fileName)
+        public NameHelper(string fileName)
         {
-            tileHelper = new TileHelper(fileName);
+            this.tileHelper = new TileHelper(fileName);
             CreateScrambledNameList();
             CreateNameList();
         }
 
-        public static bool UpdateName(string file, int nameIndex)
+        public  void UpdateName(string file, int nameIndex)
         {
             Bitmap bitmap = (Bitmap)Image.FromFile(file);
             if (bitmap.Width != 64 || bitmap.Height != 12)
             {
-                return false;
+                throw new ArgumentException("Supplied PNG is not the right size. Please use a 64x12 PNG.");
             }
 
-            if (!UpdateScrambledName(bitmap, nameIndex))
-            {
-                return false;
-            }
-
+            UpdateScrambledName(bitmap, nameIndex);
             nameList[nameIndex] = bitmap;
-            return true;
         }
 
-        public static void CreateScrambledNameList()
+        public void CreateScrambledNameList()
         {
             scrambledNameList = new List<Bitmap>();
 
@@ -85,7 +84,7 @@ namespace FE12GuideNameTool
             }
         }
 
-        private static void CreateNameList()
+        private void CreateNameList()
         {
             nameList = new List<Bitmap>();
             foreach (Bitmap scrambledName in scrambledNameList)
@@ -105,8 +104,9 @@ namespace FE12GuideNameTool
             }
         }
 
-        private static bool UpdateScrambledName(Bitmap name, int nameIndex)
+        private void UpdateScrambledName(Bitmap name, int nameIndex)
         {
+            // Build the scrambled name from the unscrambled bitmap
             Bitmap bitmap = new Bitmap(xDim, yDim);
             Graphics canvas = Graphics.FromImage(bitmap);
             canvas.DrawImage(scrambledNameList[nameIndex], 0, 0, xDim, yDim);
@@ -119,8 +119,21 @@ namespace FE12GuideNameTool
             canvas.DrawImage(name, 96, 5, reverseSection7, GraphicsUnit.Pixel);
             canvas.DrawImage(name, 104, 0, reverseSection8, GraphicsUnit.Pixel);
             canvas.Dispose();
+
+            // Turn the new scrambled name into a set of tiles to send to the TileHelper
+            List<Bitmap> newTiles = new List<Bitmap>();
+            for (int i = 0; i < 17; i++)
+            {
+                Rectangle tileSection = new Rectangle(i * 8, 0, 8, 8);
+                Bitmap tile = new Bitmap(8, 8);
+                canvas = Graphics.FromImage(tile);
+                canvas.DrawImage(bitmap, 0, 0, tileSection, GraphicsUnit.Pixel);
+                newTiles.Add(tile);
+                canvas.Dispose();
+            }
+
+            tileHelper.UpdateTiles(newTiles, nameIndex * 16);
             scrambledNameList[nameIndex] = bitmap;
-            return true;
         }
     }
 }

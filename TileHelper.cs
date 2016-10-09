@@ -1,5 +1,5 @@
 ﻿// Copyright (c) 2016 Tom Overton
-// Class for converting raw byte data to 8x8 tiles.
+// Class for converting byte data to 8x8 tiles and vice versa.
 
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,12 +10,12 @@ namespace FE12GuideNameTool
     {
         public List<Bitmap> tiles = new List<Bitmap>();
 
-        private DataHelper helper;
+        private DataHelper dataHelper;
 
         public TileHelper(string fileName)
         {
-            helper = new DataHelper(fileName);
-            CreateTilesFromData(this.helper.data);
+            dataHelper = new DataHelper(fileName);
+            CreateTilesFromData(this.dataHelper.data);
         }
 
         public void CreateTilesFromData(byte[] data)
@@ -44,6 +44,32 @@ namespace FE12GuideNameTool
                 tileIndex++;
             }
             while (previousTileContainsData);
+        }
+
+        public void UpdateTiles(List<Bitmap> newTiles, int tileIndex)
+        {
+            // Update the data based on the new tiles
+            byte[] newData = new byte[newTiles.Count * 8 * 8];
+            for (int tile = 0; tile < newTiles.Count; tile++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    for (int y = 0; y < 8; y++)
+                    {
+                        Color pixel = newTiles[tile].GetPixel(x, y);
+                        int currentDataIndex = (tile * 8 * 8) + (y * 8) + x;
+                        newData[currentDataIndex] = (byte)Palette.ReverseLookup(pixel);
+                    }
+                }
+            }
+
+            int dataIndex = tileIndex * 8 * 8;
+            this.dataHelper.UpdateData(newData, dataIndex);
+
+            for (int i = tileIndex; i < newTiles.Count; i++)
+            {
+                this.tiles[i] = newTiles[i];
+            }
         }
     }
 }

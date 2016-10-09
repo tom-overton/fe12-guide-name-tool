@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016 Tom Overton
 // Class for converting palette index to RGB color and vice versa.
 
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -19,12 +20,28 @@ namespace FE12GuideNameTool
 
         public static Color Lookup(int index)
         {
-            return palette[index];
+            Color result;
+            if (!palette.TryGetValue(index, out result))
+            {
+                string message = "Attempted to lookup invalid palette index. \n" +
+                                 "Please contact the developer if you see this error.";
+                throw new ArgumentException(message);
+            }
+
+            return result;
         }
 
         public static int ReverseLookup(Color color)
         {
-            return reversePalette[color];
+            int result;
+            if (!reversePalette.TryGetValue(color, out result))
+            {
+                string message = "Supplied PNG contains an invalid color. \n" +
+                                 "Ensure all colors in the image are part of the palette.";
+                throw new ArgumentException(message);
+            }
+
+            return result;
         }
 
         private static void InitializeForwardPalette()
