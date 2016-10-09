@@ -12,7 +12,6 @@ namespace FE12GuideNameTool
 
         public static void InitializeNameHelper(string fileName)
         {
-            Palette.InitializePalette();
             tileHelper = new TileHelper(fileName);
             CreateScrambledNameList();
             CreateNameList();
@@ -28,6 +27,7 @@ namespace FE12GuideNameTool
                 int yDim = 8;
                 Bitmap bitmap = new Bitmap(xDim, yDim);
                 Graphics canvas = Graphics.FromImage(bitmap);
+                bool discardCurrentTile = false;
                 for (int j = 0; j < 17; j++)
                 {
                     int x = j * 8;
@@ -36,9 +36,16 @@ namespace FE12GuideNameTool
                     {
                         canvas.DrawImage(tileHelper.tiles[i + j], x, y, 8, 8);
                     }
+                    else
+                    {
+                        discardCurrentTile = true;
+                    }
                 }
 
-                scrambledNameList.Add(bitmap);
+                if (!discardCurrentTile)
+                {
+                    scrambledNameList.Add(bitmap);
+                }
             }
         }
 

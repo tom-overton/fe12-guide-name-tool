@@ -42,7 +42,7 @@ namespace FE12GuideNameTool
             palette.Add(10, Color.FromArgb(248, 0, 0));      // Unused?
             palette.Add(11, Color.FromArgb(0, 248, 0));      // Unused?
             palette.Add(12, Color.FromArgb(128, 80, 168));
-            palette.Add(13, Color.FromArgb(0, 0, 248));      // Unused?
+            palette.Add(13, Color.FromArgb(24, 56, 112));
             palette.Add(14, Color.FromArgb(0, 48, 104));
             palette.Add(15, Color.FromArgb(48, 64, 128));
         }
@@ -62,7 +62,7 @@ namespace FE12GuideNameTool
             reversePalette.Add(Color.FromArgb(248, 0, 0), 10);      // Unused?
             reversePalette.Add(Color.FromArgb(0, 248, 0), 11);      // Unused?
             reversePalette.Add(Color.FromArgb(128, 80, 168), 12);
-            reversePalette.Add(Color.FromArgb(0, 0, 248), 13);      // Unused?
+            reversePalette.Add(Color.FromArgb(24, 56, 112), 13);
             reversePalette.Add(Color.FromArgb(0, 48, 104), 14);
             reversePalette.Add(Color.FromArgb(48, 64, 128), 15);
         }
