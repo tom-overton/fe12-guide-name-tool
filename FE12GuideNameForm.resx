@@ -126,4 +126,29 @@
   <metadata name="importPngOpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>454, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAAgOCj/IDgo/yA4KP////8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8BIDgo//j4+P8g0Nj/IDgo/////wH///8B////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8B////ASA4KP8g0Nj/+Pj4/yDQ2P8gOCj/////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8B////Af///wH///8BIDgo/yDQ2P/4+Pj/INDY/yA4KP////8B////Af///wH///8B////Af//
+        /wH///8B////Af///wH///8B////Af///wEgOCj/INDY//j4+P8g0Nj/IDgo/////wH///8B////Af//
+        /wH///8B////Af///wH///8B////Af///wH///8B////ASA4KP8g0Nj/+Pj4/yDQ2P8gOCj/////Af//
+        /wH///8B////ASA4KP8gOCj/////Af///wH///8B////Af///wH///8BIDgo/yDQ2P/4+Pj/INDY/yA4
+        KP////8B////ASA4KP/4+Pj/+Pj4/yA4KP////8B////Af///wH///8B////Af///wEgOCj/INDY//j4
+        +P8g0Nj/IDgo/////wH///8BIDgo/yDQ2P8gOCj/////Af///wH///8B////Af///wH///8B////ASA4
+        KP8g0Nj/+Pj4/yDQ2P8gOCj/////ASA4KP8g0Nj/IDgo/////wH///8B////Af///wH///8B////Af//
+        /wH///8BIDgo/yDQ2P/QsLD/YIAo/2CAKP8g0Nj/0LCw/yA4KP////8B////Af///wH///8B////Af//
+        /wH///8B////Af///wEgOCj/YIAo/7jIaP+4yGj/YIAo/yA4KP////8B////Af///wH///8B////Af//
+        /wH///8B////ASA4KP////8B////AWCAKP/4+Pj/uMho/2CAKP////8B////Af///wH///8B////Af//
+        /wH///8B////ASA4KP/4+Pj/IDgo/yA4KP8g0Nj/YIAo/2CAKP8AYMD/IDgo/////wH///8B////Af//
+        /wH///8B////Af///wEgOCj/+Pj4/yDQ2P8g0Nj/0LCw/yA4KP////8BIDgo/yDQ2P8gOCj/////Af//
+        /wH///8B////Af///wH///8B////ASA4KP8gOCj/IDgo/yA4KP////8B////Af///wEgOCj/INDY/yA4
+        KP////8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////ASA4
+        KP/4+Pj/AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
+        //8AAP//AAD//w==
+</value>
+  </data>
 </root>

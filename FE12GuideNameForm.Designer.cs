@@ -30,6 +30,7 @@ namespace FE12GuideNameTool
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FE12GuideNameForm));
             this.filenameBox = new System.Windows.Forms.TextBox();
             this.OpenFile = new System.Windows.Forms.Button();
             this.pkcgOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -124,6 +125,7 @@ namespace FE12GuideNameTool
             this.Controls.Add(this.OpenFile);
             this.Controls.Add(this.filenameBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FE12GuideNameForm";
             this.Text = "FE12 Guide Name Tool";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
