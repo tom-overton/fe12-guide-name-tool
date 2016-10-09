@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace FE12GuideNameTool
 {
-    public partial class Form1 : Form
+    public partial class FE12GuideNameForm : Form
     {
-        public Form1()
+        public FE12GuideNameForm()
         {
             InitializeComponent();
         }
@@ -28,7 +28,8 @@ namespace FE12GuideNameTool
                 try
                 {
                     Program.fileData = File.ReadAllBytes(file);
-                    Program.InitializeData();
+                    Bitmap firstTile = Program.CreateFirstTile();
+                    pictureBox1.Image = firstTile;
                 }
                 catch (IOException)
                 {
