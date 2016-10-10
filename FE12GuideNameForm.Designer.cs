@@ -34,13 +34,13 @@ namespace FE12GuideNameTool
             this.filenameBox = new System.Windows.Forms.TextBox();
             this.OpenFile = new System.Windows.Forms.Button();
             this.pkcgOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.namePictureBox = new System.Windows.Forms.PictureBox();
             this.nameListBox = new System.Windows.Forms.ListBox();
             this.exportButton = new System.Windows.Forms.Button();
             this.importButton = new System.Windows.Forms.Button();
             this.exportPngSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.importPngOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.namePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // filenameBox
@@ -66,15 +66,15 @@ namespace FE12GuideNameTool
             // 
             this.pkcgOpenFileDialog.Filter = "PKCG files|*.pkcg|All Files|*.*";
             // 
-            // pictureBox1
+            // namePictureBox
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 95);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.namePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.namePictureBox.Location = new System.Drawing.Point(12, 41);
+            this.namePictureBox.Name = "namePictureBox";
+            this.namePictureBox.Size = new System.Drawing.Size(128, 95);
+            this.namePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.namePictureBox.TabIndex = 2;
+            this.namePictureBox.TabStop = false;
             // 
             // nameListBox
             // 
@@ -121,14 +121,14 @@ namespace FE12GuideNameTool
             this.Controls.Add(this.importButton);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.nameListBox);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.namePictureBox);
             this.Controls.Add(this.OpenFile);
             this.Controls.Add(this.filenameBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FE12GuideNameForm";
             this.Text = "FE12 Guide Name Tool";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.namePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,7 +138,7 @@ namespace FE12GuideNameTool
         private System.Windows.Forms.TextBox filenameBox;
         private System.Windows.Forms.Button OpenFile;
         private System.Windows.Forms.OpenFileDialog pkcgOpenFileDialog;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox namePictureBox;
         private System.Windows.Forms.ListBox nameListBox;
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Button importButton;

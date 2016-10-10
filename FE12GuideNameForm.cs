@@ -37,7 +37,7 @@ namespace FE12GuideNameTool
         {
             if (nameListBox.SelectedIndex >= 0 && nameListBox.SelectedIndex < nameHelper.nameList.Count)
             {
-                pictureBox1.Image = nameHelper.nameList[nameListBox.SelectedIndex];
+                namePictureBox.Image = nameHelper.nameList[nameListBox.SelectedIndex];
             }
         }
 
@@ -59,6 +59,7 @@ namespace FE12GuideNameTool
                 try
                 {
                     nameHelper.UpdateName(importPngOpenFileDialog.FileName, nameListBox.SelectedIndex);
+                    namePictureBox.Image = nameHelper.nameList[nameListBox.SelectedIndex];
                 }
                 catch (Exception ex)
                 {
@@ -70,7 +71,7 @@ namespace FE12GuideNameTool
         private void InitializeStateFromFile(string fileName)
         {
             nameHelper = new NameHelper(fileName);
-            pictureBox1.Image = nameHelper.nameList[0];
+            namePictureBox.Image = nameHelper.nameList[0];
 
             // Clear this in case this is the second file the user has opened.
             nameListBox.Items.Clear();
