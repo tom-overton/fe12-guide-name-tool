@@ -52,7 +52,8 @@ namespace FE12GuideNameTool
             int result;
             if (!reversePalette.TryGetValue(color, out result))
             {
-                string message = "Supplied PNG contains an invalid color. \n" +
+                string colorString = "(" + color.R + ", " + color.G + ", " + color.B + ")";
+                string message = "Supplied PNG contains the invalid color " + colorString + ".\n" +
                                  "Ensure all colors in the image are part of the palette.";
                 throw new ArgumentException(message);
             }
