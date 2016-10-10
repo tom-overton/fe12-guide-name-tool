@@ -1,0 +1,6 @@
+v1.1 (October 10th, 2016)
+- Fix an issue where names couldn't be updated with importing unless they were in the 0th index.
+- Improve the error message returned when an imported PNG contains a color not found in the palette.
+
+v1.0 (October 9th, 2016)
+- Inital release.
