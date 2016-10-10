@@ -81,9 +81,9 @@ namespace FE12GuideNameTool
             // Write a backup to be nice to the user
             File.WriteAllBytes(fileName + ".bak", this.fileData);
 
-            for (int i = fileDataIndex; i < newFileData.Length; i++)
+            for (int i = fileDataIndex; i < fileDataIndex + newFileData.Length; i++)
             {
-                this.fileData[i] = newFileData[i];
+                this.fileData[i] = newFileData[i - fileDataIndex];
             }
 
             File.WriteAllBytes(this.fileName, this.fileData);
