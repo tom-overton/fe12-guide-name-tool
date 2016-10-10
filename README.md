@@ -5,7 +5,7 @@ A quick-and-dirty tool for working with the name graphics found in FE12's Guide.
 
 This tool is intended to be used with the name_[faction].pkcg files found in the dic/ directory of FE12. It may work with other PKCG files, but it probably won't. To use this tool:
 
-1. [Download the tool](https://github.com/tom-overton/fe12-guide-name-tool/releases/tag/v1.0) or pull and compile it yourself.
+1. [Download the tool](https://github.com/tom-overton/fe12-guide-name-tool/releases) or pull and compile it yourself.
 2. Extract the name file from the FE12 ROM. I recommend using [Tinke](https://github.com/pleonex/tinke) to do this. All name files are located in the dic/ directory, and are labeled by faction.
 3. Decompress the name file you extracted. I used [Puyo Tools](http://www.romhacking.net/utilities/1130/) for this, but feel free to use whatever you like, so long as it supports LZSS compression.
 4. Open the FE12 Guide Name Tool, then use the Open File button to select the decompressed PKCG you created in Step 3.
