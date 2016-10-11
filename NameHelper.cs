@@ -1,5 +1,5 @@
 ﻿// Copyright (c) 2016 Tom Overton
-// Class for converting 8x8 tiles to 64x12 name bitmaps and vice versa.
+// Class for converting 8x8 tiles to 64x16 name bitmaps and vice versa.
 
 using System;
 using System.Collections.Generic;
@@ -16,23 +16,25 @@ namespace FE12GuideNameTool
         private int xDim = 136;
         private int yDim = 8;
 
-        private static Rectangle section1 = new Rectangle(0, 7, 32, 1);
-        private static Rectangle section2 = new Rectangle(8, 0, 32, 5);
-        private static Rectangle section3 = new Rectangle(32, 5, 32, 3);
-        private static Rectangle section4 = new Rectangle(40, 0, 32, 3);
-        private static Rectangle section5 = new Rectangle(64, 7, 32, 1);
-        private static Rectangle section6 = new Rectangle(72, 0, 32, 5);
-        private static Rectangle section7 = new Rectangle(96, 5, 32, 3);
-        private static Rectangle section8 = new Rectangle(104, 0, 32, 3);
+        // Describes the position and size of each section of the name within the larger scrambled name graphic.
+        private static Rectangle scrambledSection1 = new Rectangle(0, 5, 32, 3);
+        private static Rectangle scrambledSection2 = new Rectangle(8, 0, 32, 5);
+        private static Rectangle scrambledSection3 = new Rectangle(32, 5, 32, 3);
+        private static Rectangle scrambledSection4 = new Rectangle(40, 0, 32, 5);
+        private static Rectangle scrambledSection5 = new Rectangle(64, 5, 32, 3);
+        private static Rectangle scrambledSection6 = new Rectangle(72, 0, 32, 5);
+        private static Rectangle scrambledSection7 = new Rectangle(96, 5, 32, 3);
+        private static Rectangle scrambledSection8 = new Rectangle(104, 0, 32, 5);
 
-        private static Rectangle reverseSection1 = new Rectangle(0, 0, 32, 1);
-        private static Rectangle reverseSection2 = new Rectangle(0, 1, 32, 5);
-        private static Rectangle reverseSection3 = new Rectangle(0, 6, 32, 3);
-        private static Rectangle reverseSection4 = new Rectangle(0, 9, 32, 3);
-        private static Rectangle reverseSection5 = new Rectangle(32, 0, 32, 1);
-        private static Rectangle reverseSection6 = new Rectangle(32, 1, 32, 5);
-        private static Rectangle reverseSection7 = new Rectangle(32, 6, 32, 3);
-        private static Rectangle reverseSection8 = new Rectangle(32, 9, 32, 3);
+        // Describes the position and size of the above sections once placed within the "correct" name graphic.
+        private static Rectangle section1 = new Rectangle(0, 0, 32, 3);
+        private static Rectangle section2 = new Rectangle(0, 3, 32, 5);
+        private static Rectangle section3 = new Rectangle(0, 8, 32, 3);
+        private static Rectangle section4 = new Rectangle(0, 11, 32, 5);
+        private static Rectangle section5 = new Rectangle(32, 0, 32, 3);
+        private static Rectangle section6 = new Rectangle(32, 3, 32, 5);
+        private static Rectangle section7 = new Rectangle(32, 8, 32, 3);
+        private static Rectangle section8 = new Rectangle(32, 11, 32, 5);
 
         public NameHelper(string fileName)
         {
@@ -44,9 +46,9 @@ namespace FE12GuideNameTool
         public  void UpdateName(string file, int nameIndex)
         {
             Bitmap bitmap = (Bitmap)Image.FromFile(file);
-            if (bitmap.Width != 64 || bitmap.Height != 12)
+            if (bitmap.Width != 64 || bitmap.Height != 16)
             {
-                throw new ArgumentException("Supplied PNG is not the right size. Please use a 64x12 PNG.");
+                throw new ArgumentException("Supplied PNG is not the right size. Please use a 64x16 PNG.");
             }
 
             UpdateScrambledName(bitmap, nameIndex);
@@ -89,16 +91,16 @@ namespace FE12GuideNameTool
             nameList = new List<Bitmap>();
             foreach (Bitmap scrambledName in scrambledNameList)
             {
-                Bitmap bitmap = new Bitmap(64, 12);
+                Bitmap bitmap = new Bitmap(64, 16);
                 Graphics canvas = Graphics.FromImage(bitmap);
-                canvas.DrawImage(scrambledName, 0, 0, section1, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 0, 1, section2, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 0, 6, section3, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 0, 9, section4, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 32, 0, section5, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 32, 1, section6, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 32, 6, section7, GraphicsUnit.Pixel);
-                canvas.DrawImage(scrambledName, 32, 9, section8, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section1.X, section1.Y, scrambledSection1, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section2.X, section2.Y, scrambledSection2, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section3.X, section3.Y, scrambledSection3, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section4.X, section4.Y, scrambledSection4, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section5.X, section5.Y, scrambledSection5, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section6.X, section6.Y, scrambledSection6, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section7.X, section7.Y, scrambledSection7, GraphicsUnit.Pixel);
+                canvas.DrawImage(scrambledName, section8.X, section8.Y, scrambledSection8, GraphicsUnit.Pixel);
                 canvas.Dispose();
                 nameList.Add(bitmap);
             }
@@ -110,14 +112,14 @@ namespace FE12GuideNameTool
             Bitmap bitmap = new Bitmap(xDim, yDim);
             Graphics canvas = Graphics.FromImage(bitmap);
             canvas.DrawImage(scrambledNameList[nameIndex], 0, 0, xDim, yDim);
-            canvas.DrawImage(name, 0, 7, reverseSection1, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 8, 0, reverseSection2, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 32, 5, reverseSection3, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 40, 0, reverseSection4, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 64, 7, reverseSection5, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 72, 0, reverseSection6, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 96, 5, reverseSection7, GraphicsUnit.Pixel);
-            canvas.DrawImage(name, 104, 0, reverseSection8, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection1.X, scrambledSection1.Y, section1, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection2.X, scrambledSection2.Y, section2, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection3.X, scrambledSection3.Y, section3, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection4.X, scrambledSection4.Y, section4, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection5.X, scrambledSection5.Y, section5, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection6.X, scrambledSection6.Y, section6, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection7.X, scrambledSection7.Y, section7, GraphicsUnit.Pixel);
+            canvas.DrawImage(name, scrambledSection8.X, scrambledSection8.Y, section8, GraphicsUnit.Pixel);
             canvas.Dispose();
 
             // Turn the new scrambled name into a set of tiles to send to the TileHelper
