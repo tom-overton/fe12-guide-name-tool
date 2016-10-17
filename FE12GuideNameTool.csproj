@@ -58,6 +58,7 @@
       <DependentUpon>FE12GuideNameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NameHelper.cs" />
+    <Compile Include="NameFileMapper.cs" />
     <Compile Include="Palette.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +89,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\NameFileContents.txt" />
     <Content Include="Resources\falchion.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,6 +13,7 @@ namespace FE12GuideNameTool
         [STAThread]
         static void Main()
         {
+            NameFileMapper.InitializeNameFileMapper();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FE12GuideNameForm());

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016 Tom Overton
 
 using System;
+using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
@@ -72,20 +73,32 @@ namespace FE12GuideNameTool
         {
             nameHelper = new NameHelper(fileName);
             namePictureBox.Image = nameHelper.nameList[0];
-
-            // Clear this in case this is the second file the user has opened.
-            nameListBox.Items.Clear();
-            for (int i = 0; i < nameHelper.nameList.Count; i++)
-            {
-                nameListBox.Items.Add("Name" + i);
-            }
-
+            InitializeNameListBoxContents(fileName);
             nameListBox.SelectedIndex = 0;
         }
 
         private void ShowErrorBox(string message)
         {
             MessageBox.Show(message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void InitializeNameListBoxContents(string fileName)
+        {
+            // Clear this in case this is the second file the user has opened.
+            nameListBox.Items.Clear();
+            List<string> nameList = NameFileMapper.GetNamesForFile(fileName);
+
+            for (int i = 0; i < nameHelper.nameList.Count; i++)
+            {
+                if (nameList != null)
+                {
+                    nameListBox.Items.Add(nameList[i]);
+                }
+                else
+                {
+                    nameListBox.Items.Add("Name" + i);
+                }
+            }
         }
     }
 }
