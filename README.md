@@ -1,7 +1,7 @@
 # fe12-guide-name-tool
 A quick-and-dirty tool for working with the name graphics found in FE12's Guide.
 
-![screenshot](https://cloud.githubusercontent.com/assets/12245827/19224598/eb7d2ca2-8e3d-11e6-9104-3d28df114c9f.png)
+![screenshot](https://cloud.githubusercontent.com/assets/12245827/19423888/920e6e8c-93d9-11e6-99fd-3959743b11f8.png)
 
 This tool is intended to be used with the name_[faction].pkcg files found in the dic/ directory of FE12. It may work with other PKCG files, but it probably won't. To use this tool:
 

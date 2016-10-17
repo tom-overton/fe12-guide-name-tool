@@ -1,3 +1,8 @@
+v1.2 (October 16th, 2016)
+- Switch from using 64x12 to 64x16 graphics. This reflects how the names are handled by the game.
+- Provide the character's actual names in the list instead of using identifiers like "Name0". Note that this only works if you're using files that are named identically to the ones in the game.
+- Create a second zoomed-in version of the name to reduce eye strain.
+
 v1.1 (October 10th, 2016)
 - Fix an issue where names couldn't be updated with importing unless they were in the 0th index.
 - Improve the error message returned when an imported PNG contains a color not found in the palette.
