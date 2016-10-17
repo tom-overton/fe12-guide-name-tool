@@ -40,7 +40,7 @@ namespace FE12GuideNameTool
         {
             if (nameListBox.SelectedIndex >= 0 && nameListBox.SelectedIndex < nameHelper.nameList.Count)
             {
-                namePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[nameListBox.SelectedIndex], 2);
+                SetPictureBoxState(nameListBox.SelectedIndex);
             }
         }
 
@@ -62,7 +62,7 @@ namespace FE12GuideNameTool
                 try
                 {
                     nameHelper.UpdateName(importPngOpenFileDialog.FileName, nameListBox.SelectedIndex);
-                    namePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[nameListBox.SelectedIndex], 2);
+                    SetPictureBoxState(nameListBox.SelectedIndex);
                 }
                 catch (Exception ex)
                 {
@@ -71,17 +71,17 @@ namespace FE12GuideNameTool
             }
         }
 
-        private void InitializeStateFromFile(string fileName)
-        {
-            nameHelper = new NameHelper(fileName);
-            namePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[0], 2);
-            InitializeNameListBoxContents(fileName);
-            nameListBox.SelectedIndex = 0;
-        }
-
         private void ShowErrorBox(string message)
         {
             MessageBox.Show(message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void InitializeStateFromFile(string fileName)
+        {
+            nameHelper = new NameHelper(fileName);
+            SetPictureBoxState(0);
+            InitializeNameListBoxContents(fileName);
+            nameListBox.SelectedIndex = 0;
         }
 
         private void InitializeNameListBoxContents(string fileName)
@@ -101,6 +101,12 @@ namespace FE12GuideNameTool
                     nameListBox.Items.Add("Name" + i);
                 }
             }
+        }
+
+        private void SetPictureBoxState(int index)
+        {
+            namePictureBox.Image = nameHelper.nameList[index];
+            zoomedNamePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[index], 2);
         }
 
         private Bitmap GetZoomedGraphic(Bitmap originalGraphic, int zoomFactor)
