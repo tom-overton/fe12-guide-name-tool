@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
@@ -38,7 +40,7 @@ namespace FE12GuideNameTool
         {
             if (nameListBox.SelectedIndex >= 0 && nameListBox.SelectedIndex < nameHelper.nameList.Count)
             {
-                namePictureBox.Image = nameHelper.nameList[nameListBox.SelectedIndex];
+                namePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[nameListBox.SelectedIndex], 2);
             }
         }
 
@@ -60,7 +62,7 @@ namespace FE12GuideNameTool
                 try
                 {
                     nameHelper.UpdateName(importPngOpenFileDialog.FileName, nameListBox.SelectedIndex);
-                    namePictureBox.Image = nameHelper.nameList[nameListBox.SelectedIndex];
+                    namePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[nameListBox.SelectedIndex], 2);
                 }
                 catch (Exception ex)
                 {
@@ -72,7 +74,7 @@ namespace FE12GuideNameTool
         private void InitializeStateFromFile(string fileName)
         {
             nameHelper = new NameHelper(fileName);
-            namePictureBox.Image = nameHelper.nameList[0];
+            namePictureBox.Image = GetZoomedGraphic(nameHelper.nameList[0], 2);
             InitializeNameListBoxContents(fileName);
             nameListBox.SelectedIndex = 0;
         }
@@ -99,6 +101,16 @@ namespace FE12GuideNameTool
                     nameListBox.Items.Add("Name" + i);
                 }
             }
+        }
+
+        private Bitmap GetZoomedGraphic(Bitmap originalGraphic, int zoomFactor)
+        {
+            Bitmap newGraphic = new Bitmap(originalGraphic.Width * zoomFactor, originalGraphic.Height * zoomFactor);
+            Graphics canvas = Graphics.FromImage(newGraphic);
+            canvas.InterpolationMode = InterpolationMode.NearestNeighbor;
+            canvas.DrawImage(originalGraphic, 0, 0, newGraphic.Width, newGraphic.Height);
+            canvas.Dispose();
+            return newGraphic;
         }
     }
 }
