@@ -92,7 +92,7 @@ namespace FE12GuideNameTool
 
             for (int i = 0; i < nameHelper.nameList.Count; i++)
             {
-                if (nameList != null)
+                if (nameList != null && i < nameList.Count)
                 {
                     nameListBox.Items.Add(nameList[i]);
                 }
