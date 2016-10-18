@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FE12GuideNameTool", "FE12GuideNameTool\FE12GuideNameTool.csproj", "{F42BF98A-7432-48A5-B91F-574BF985B14A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FE12GuideNameTool.Tests", "FE12GuideNameTool.Tests\FE12GuideNameTool.Tests.csproj", "{472B2C00-8C95-497F-A57D-E349626F6D7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F42BF98A-7432-48A5-B91F-574BF985B14A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F42BF98A-7432-48A5-B91F-574BF985B14A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F42BF98A-7432-48A5-B91F-574BF985B14A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{472B2C00-8C95-497F-A57D-E349626F6D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{472B2C00-8C95-497F-A57D-E349626F6D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{472B2C00-8C95-497F-A57D-E349626F6D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{472B2C00-8C95-497F-A57D-E349626F6D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
