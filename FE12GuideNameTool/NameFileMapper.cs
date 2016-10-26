@@ -27,7 +27,7 @@ namespace FE12GuideNameTool
             string[] fileSegments = filePath.Split(Path.DirectorySeparatorChar);
             string fileName = fileSegments[fileSegments.Length - 1];
             List<string> result = null;
-            fileToNameList.TryGetValue(fileName, out result);
+            fileToNameList.TryGetValue(fileName.ToLowerInvariant(), out result);
             return result;
         }
 
@@ -43,7 +43,7 @@ namespace FE12GuideNameTool
                 keepReading = ((line = reader.ReadLine()) != null);
                 if (!keepReading || string.IsNullOrWhiteSpace(line))
                 {
-                    fileToNameList.Add(currentName, currentList);
+                    fileToNameList.Add(currentName.ToLowerInvariant(), currentList);
                     currentName = null;
                     currentList = new List<string>();
                 }
