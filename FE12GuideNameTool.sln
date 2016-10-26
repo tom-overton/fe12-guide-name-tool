@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FE12GuideNameTool", "FE12GuideNameTool\FE12GuideNameTool.csproj", "{F42BF98A-7432-48A5-B91F-574BF985B14A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FE12GuideNameTool", "src\FE12GuideNameTool.csproj", "{F42BF98A-7432-48A5-B91F-574BF985B14A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FE12GuideNameTool.Tests", "FE12GuideNameTool.Tests\FE12GuideNameTool.Tests.csproj", "{472B2C00-8C95-497F-A57D-E349626F6D7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FE12GuideNameTool.Tests", "tests\FE12GuideNameTool.Tests.csproj", "{472B2C00-8C95-497F-A57D-E349626F6D7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
