@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 
 namespace FE12GuideNameTool
 {
@@ -10,12 +11,18 @@ namespace FE12GuideNameTool
     {
         public List<Bitmap> tiles = new List<Bitmap>();
 
-        private DataHelper dataHelper;
+        public string fileName;
+        public byte[] originalFileData;
+        private FileData fileData;
+        private Palette palette;
 
         public TileHelper(string fileName)
         {
-            dataHelper = new DataHelper(fileName);
-            CreateTilesFromData(this.dataHelper.data);
+            this.fileName = fileName;
+            this.originalFileData = File.ReadAllBytes(this.fileName);
+            this.palette = new Palette(this.originalFileData);
+            this.fileData = new FileData(this.originalFileData);
+            CreateTilesFromData(this.fileData.GetPalettizedData());
         }
 
         public void CreateTilesFromData(byte[] data)
@@ -31,7 +38,7 @@ namespace FE12GuideNameTool
                     int x = i % 8;
                     int y = i / 8;
                     int index = (tileIndex * 64) + i;
-                    Color color = Palette.Lookup(data[index]);
+                    Color color = palette.Lookup(data[index]);
                     if (!previousTileContainsData && data[index] != 0)
                     {
                         previousTileContainsData = true;
@@ -58,18 +65,27 @@ namespace FE12GuideNameTool
                     {
                         Color pixel = newTiles[tile].GetPixel(x, y);
                         int currentDataIndex = (tile * 8 * 8) + (y * 8) + x;
-                        newData[currentDataIndex] = (byte)Palette.ReverseLookup(pixel);
+                        newData[currentDataIndex] = palette.ReverseLookup(pixel);
                     }
                 }
             }
 
             int dataIndex = tileIndex * 8 * 8;
-            this.dataHelper.UpdateData(newData, dataIndex);
+            this.fileData.UpdateFromPalettizedByteData(newData, dataIndex);
 
             for (int i = tileIndex; i < newTiles.Count; i++)
             {
                 this.tiles[i] = newTiles[i];
             }
+
+            WriteDataToFile();
+        }
+
+        private void WriteDataToFile()
+        {
+            // Write a backup to be nice to the user
+            File.WriteAllBytes(fileName + ".bak", this.originalFileData);
+            File.WriteAllBytes(this.fileName, this.fileData.Data);
         }
     }
 }

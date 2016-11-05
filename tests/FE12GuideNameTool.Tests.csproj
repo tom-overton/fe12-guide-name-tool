@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FE12GuideNameTool\FE12GuideNameTool.csproj">
+    <ProjectReference Include="..\src\FE12GuideNameTool.csproj">
       <Project>{f42bf98a-7432-48a5-b91f-574bf985b14a}</Project>
       <Name>FE12GuideNameTool</Name>
     </ProjectReference>
